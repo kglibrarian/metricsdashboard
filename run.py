@@ -5,6 +5,7 @@
 from flask import *
 from flask_cors import CORS
 from templates import app
+
 #################################################
 # Flask Setup
 #################################################
@@ -35,5 +36,11 @@ if __name__ == "__main__":
 # This won’t be used in production, but it will see a lot of 
 # mileage in development.
 #https://itnext.io/a-template-for-creating-a-full-stack-web-application-with-flask-npm-webpack-and-reactjs-be2294b111bd
+
+#Sequence of events:
+# 1. Start the application from metricsdashboard/run.py
+# 2. metricsdashboard/run.py imports app metricsdashboard/templates/__init__.py
+# 3. metrcisdashboard/templates/__init__.py initializes the app and imports all the views
+# 4. metricsdashboard/templates/dashboard/views.py listen to the url / and other routes and renders an html file.
 
 

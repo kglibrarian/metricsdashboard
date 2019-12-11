@@ -1,13 +1,24 @@
-# This is where the routes are defined. 
-# It may be split into a package of its own (yourapp/views/) 
-# with related views grouped together into modules.
+#################################################
+#Import Libraries
+#################################################
 
 from templates import app
-from flask import render_template@app.route('/')
+from flask import render_template, Blueprint
+# from flask import render_template@app.route('/')
 
-@app.route('/dashboard')
+# @app.route('/dashboard')
+# def index():
+#     return render_template("index.html")
+
+dashboard_blueprint = Blueprint('dashboard',__name__)
+
+@dashboard_blueprint.route('/dashboard')
+@dashboard_blueprint.route('/')
 def index():
     return render_template("index.html")
+
+
+
 
 
 # @app.route('/success', methods = ['POST'])  
@@ -44,7 +55,13 @@ def index():
 # Notes
 #################################
 #We can identify a circular import between metricsdashboard/templates/__init__.py 
-# and metricsdashboar/templates/hello/views.py, where, in the __init__.py, 
+# and metricsdashboard/templates/dashboard/views.py, where, in the __init__.py, 
 # we import views from the views.py, and in the views.py, 
 # we import the app from the __init__.py. So, this actually makes 
 # the two modules depend on each other.
+
+#metricsdashboard/templates/hello/views.py is React specific. 
+
+# This is where the routes are defined. 
+# It may be split into a package of its own (yourapp/views/) 
+# with related views grouped together into modules.
